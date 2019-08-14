@@ -15,9 +15,8 @@ workflows:
               gradle jar 
         - store_test_results:
             path: build/test-results       
-  jobs:
-  -  build:
-      docker:
+   - build:
+       docker:
         - image: circleci/openjdk:8-jdk
       steps:
         - checkout 
