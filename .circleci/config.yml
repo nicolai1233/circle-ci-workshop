@@ -27,7 +27,8 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
-      - checkout
+      - attach_workspace:
+            at: .
       - run:
           name: package
           command:
@@ -35,8 +36,6 @@ jobs:
       - store_artifacts:
           path: build/libs
           destination: prefix
-      - attach_workspace:
-            at: .
       - persist_to_workspace:
           root: .
           paths: 
