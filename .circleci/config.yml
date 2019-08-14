@@ -10,7 +10,11 @@ jobs:
           command: 
             gradle test          
       - store_test_results:
-          path: build/test-results                 
+          path: build/test-results   
+      - persist_to_workspace:
+          root: .
+          paths: 
+            - .              
   package:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -23,14 +27,8 @@ jobs:
       - store_artifacts:
           path: build/libs
           destination: prefix
-      - persist_to_workspace:
-          root: circle-ci-workshop/.circleci #the folder to start the workspace from.
-          paths: 
-            - 1 #if you want the files inside the 1 folder to be persisted.
-            - .
-
       - attach_workspace:
-            at: /tmp/workspace
+            at: .
 workflows:
   version: 2
   two_job_flow:
