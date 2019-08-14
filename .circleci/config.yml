@@ -1,7 +1,7 @@
 version: 2.0
   jobs:
-    - test:
-       docker:
+    test:
+      docker:
         - image: circleci/openjdk:8-jdk
       steps:
         - checkout 
@@ -14,8 +14,8 @@ version: 2.0
               gradle jar 
         - store_test_results:
             path: build/test-results       
-    - build:
-       docker:
+    build:
+      docker:
         - image: circleci/openjdk:8-jdk
       steps:
         - checkout 
