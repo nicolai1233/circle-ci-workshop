@@ -4,7 +4,7 @@ jobs:
     machine: true
     steps:
       - attach_workspace:
-            at: .
+          at: .
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t $DOCKER_USER/myapp:$CIRCLE_SHA1 .
       - run: docker push $DOCKER_USER/myapp:$CIRCLE_SHA1
@@ -28,7 +28,7 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - attach_workspace:
-            at: .
+          at: .
       - run:
           name: package
           command:
