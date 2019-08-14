@@ -1,3 +1,3 @@
 FROM openjdk:8
-#COPY the jar file into the container
-#ENTRYPOINT ["java", "-jar",....] 
+COPY java -jar XYZ
+ENTRYPOINT ["java", "-jar",....] 
