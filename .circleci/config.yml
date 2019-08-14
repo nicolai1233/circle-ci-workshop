@@ -1,7 +1,7 @@
 version: 2.0
 jobs:
   dockerize:
-    machine: store_test_results
+    machine: true
     steps:
       - checkout
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -44,7 +44,6 @@ workflows:
   version: 2
   two_job_flow:
     jobs:
-      - dockerize
       - test
       - package
 
