@@ -29,10 +29,4 @@ workflows:
     jobs:
       - test
       - package
-      - persist_to_workspace:
-          root: test #the folder to start the workspace from.
-          paths: 
-            - 1 #if you want the files inside the 1 folder to be persisted.
-            - . 
-      - attach_workspace:
-          at: /tmp/workspace
+      
