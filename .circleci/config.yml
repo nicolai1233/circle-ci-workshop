@@ -1,7 +1,7 @@
 workflows: 
   version: 2.0
   jobs:
-    test:
+   - test:
       docker:
         - image: circleci/openjdk:8-jdk
       steps:
@@ -16,7 +16,7 @@ workflows:
         - store_test_results:
             path: build/test-results       
    jobs:
-      build:
+  -  build:
       docker:
         - image: circleci/openjdk:8-jdk
       steps:
