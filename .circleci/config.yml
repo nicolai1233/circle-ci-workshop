@@ -8,6 +8,7 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t $DOCKER_USER/myapp:$CIRCLE_SHA1 .
       - run: docker push $DOCKER_USER/myapp:$CIRCLE_SHA1
+      - run: docker push $DOCKER_USER/circle-ci-workshop:latest
   test:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -35,18 +36,22 @@ jobs:
             gradle jar
       - store_artifacts:
           path: build/libs
-          destination: prefix
+          destination: build
       - persist_to_workspace:
           root: .
           paths: 
-            - .
+            - build/libs
 workflows:
   version: 2
   two_job_flow:
     jobs:
       - test
-      - package
+      - package:
+        requires:
+          - test
       - dockerize
+        requires:
+          - package
 
 
    
