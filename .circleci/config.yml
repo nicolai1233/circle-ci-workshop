@@ -47,12 +47,12 @@ workflows:
     jobs:
       - test
       - package:
-        requires:
-          - test
-      - dockerize
-        requires:
-          - package
-          
+          requires:
+            - test
+      - dockerize:
+          requires:
+            - package
+
 
 
    
