@@ -1,5 +1,6 @@
 version: 2.0
 jobs:
+
   test:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -29,6 +30,10 @@ jobs:
           destination: prefix
       - attach_workspace:
             at: .
+      - persist_to_workspace:
+          root: .
+          paths: 
+            - .
 workflows:
   version: 2
   two_job_flow:
